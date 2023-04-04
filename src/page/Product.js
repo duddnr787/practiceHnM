@@ -9,7 +9,7 @@ const Product = () => {
   const getProduct = async () => {
     let search = query.get('q') || '';
     console.log('쿼리값은', search);
-    await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products?q=${search}`)
+    await fetch(`https://my-json-server.typicode.com/duddnr787/cloneH_M/products?q=${search}`)
     .then (res => res.json())
     .then (data => setProductList(data));
   }

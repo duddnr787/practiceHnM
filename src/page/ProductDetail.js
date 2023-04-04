@@ -7,7 +7,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [isListHover, setIsListHover] = useState(true);
   const getProductDetail = async () => {
-    await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products/${id}`)
+    await fetch(`https://my-json-server.typicode.com/duddnr787/cloneH_M/products/${id}`)
     .then(res => res.json())
     .then(data => setProduct(data));
   }
