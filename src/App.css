@@ -7,6 +7,7 @@
 .nav-section{
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 .menu-wrap{
   display: flex;
@@ -26,19 +27,36 @@
 }
 .menu-search input {
   border: none;
+  margin-left: 10px;
 }
-.login-container{
+.menu-search input:focus {
+  outline: none;
+}
+.Card{
+  cursor: pointer;
+}
+.product-img {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
-.login-wrap{
-  width: 400px;
-  height: 500px;
-  background-color: rgb(184, 215, 215);
+#dropdown-basic-button {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+#dropdown-basic-button:hover {
+  background-color: black;
+  color: white;
+}
+.product-btn {
+  width: 80%;
+  border-radius: 1px;
   margin-top: 30px;
-  border-radius: 15px;
 }
-.login-wrap input {
-  margin: 30px;
+.product-img img {
+  cursor: pointer;
+}
+.product-container { 
+  margin: 30px 0 30px 0;
 }

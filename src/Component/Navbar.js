@@ -4,19 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({authenticate, setAuthenticate}) => {
   const menuList = ['여성','Divided','남성','신생아/유아','아동','H&M HOME','Sale','지속가능성'];
   const navigate = useNavigate();
+  const search = (e) => {
+    if(e.key === 'Enter'){
+      let keyword = e.target.value; //input 안에 있는 검색 값을 가져오고 싶을 때는 
+      navigate(`/?q=${keyword}`)
+    }
+  }
   return (
     <div>
       <div>
-        <div className='login-btn' onClick={()=>navigate('/login')}>
+        <div className='login-btn' onClick={()=> authenticate === false ? navigate('/login') :  setAuthenticate(false)}>
           <FontAwesomeIcon icon={faUser}  />
-          <div>로그인</div>
+          <div>{authenticate === false ? '로그인' : '로그아웃'}</div>
         </div>
       </div>
       <div className='nav-section'>
-        <img src="https://blog.kakaocdn.net/dn/Yt80C/btqDeJAYUBo/JQbTuukRladq2AUOeqgiEK/img.jpg" width={100} />
+        <img src="https://blog.kakaocdn.net/dn/Yt80C/btqDeJAYUBo/JQbTuukRladq2AUOeqgiEK/img.jpg" width={100} onClick={()=>navigate('/')}/>
       </div>
       <div className='menu-wrap'>
           <ul className='menu-list'>
@@ -24,7 +30,7 @@ const Navbar = () => {
           </ul>
           <div className='menu-search'>
             <FontAwesomeIcon icon={faSearch}/>
-            <input type="text" placeholder='드레스'/>
+            <input type="text" onKeyPress={(e) => search(e)}/>
           </div>
       </div>
     </div>
