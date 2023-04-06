@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({setAuthenticate}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  const count = useSelector(state=>state.count);
+
+  let count = useSelector(state=>state.count);
 
   const loginUser = (e) => {
     e.preventDefault();
@@ -15,8 +15,12 @@ const Login = ({setAuthenticate}) => {
     navigate('/');
   }
   const increase = () => {
-    dispatch({type:'INCREMENT'})
+    dispatch({type:'INCREMENT', payload: {num:5} });
   }
+  const decrease = () => {
+    dispatch({type:'DECREMENT', payload: {num:5} });
+  }
+  
   return (
     <Container >
       <Form onSubmit={(e) => loginUser(e)}>
@@ -39,6 +43,9 @@ const Login = ({setAuthenticate}) => {
       </Button>
       <Button onClick={increase}>
         +1
+      </Button>
+      <Button onClick={decrease}>
+        -1
       </Button>
       <div>{count}</div>
     </Form>

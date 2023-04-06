@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../Component/ProductCard';
 
 const Product = () => {
-  const [productList, setProductList] = useState([]);
+  // const [productList, setProductList] = useState([]);
+  const dispatch = useDispatch();
+  let productList = useSelector(state=>state.productList);
   const [query, setQuery] = useSearchParams();
   const getProduct = async () => {
-    let search = query.get('q') || '';
-    console.log('쿼리값은', search);
+    let search = query.get('q') || ''; // '' 초기값 설정 
     await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products?q=${search}`)
     .then (res => res.json())
-    .then (data => setProductList(data));
+    .then (data => dispatch({type:'PRODUCT', payload: {data:(data)} }));
   }
+  console.log('product',productList);
   useEffect(()=>{
     getProduct();
   },[query])

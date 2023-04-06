@@ -19,7 +19,6 @@ import { useDispatch } from 'react-redux';
 //7. 상품을 검색. 
 function App() {
   const [authenticate, setAuthenticate] = useState(false);
-  
 
   useEffect(() => {
   },[authenticate])
