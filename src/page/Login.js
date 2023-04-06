@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { Button,Container,Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Login = ({setAuthenticate}) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+  const count = useSelector(state=>state.count);
+
   const loginUser = (e) => {
     e.preventDefault();
     setAuthenticate(true);
     navigate('/');
+  }
+  const increase = () => {
+    dispatch({type:'INCREMENT'})
   }
   return (
     <Container >
@@ -29,6 +37,10 @@ const Login = ({setAuthenticate}) => {
       <Button variant="danger" type="submit">
         로그인
       </Button>
+      <Button onClick={increase}>
+        +1
+      </Button>
+      <div>{count}</div>
     </Form>
     </Container>
   );

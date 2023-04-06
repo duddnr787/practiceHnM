@@ -7,6 +7,7 @@ import ProductDetail from './page/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import PrivateRoute from './route/PrivateRoute';
+import { useDispatch } from 'react-redux';
 
 //1. 페이지 : 전체상품, 로그인, 상품 상세.
 //2. 전체 상품페이지는 전체 상품을 볼 수 있다.
@@ -18,8 +19,9 @@ import PrivateRoute from './route/PrivateRoute';
 //7. 상품을 검색. 
 function App() {
   const [authenticate, setAuthenticate] = useState(false);
+  
+
   useEffect(() => {
-    console.log('aaa', authenticate);
   },[authenticate])
   return (
     <div>
