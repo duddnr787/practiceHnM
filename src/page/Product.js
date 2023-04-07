@@ -5,7 +5,6 @@ import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../Component/ProductCard';
 
 const Product = () => {
-  // const [productList, setProductList] = useState([]);
   const dispatch = useDispatch();
   let productList = useSelector(state=>state.productList);
   const [query, setQuery] = useSearchParams();
@@ -15,7 +14,6 @@ const Product = () => {
     .then (res => res.json())
     .then (data => dispatch({type:'PRODUCT', payload: {data:(data)} }));
   }
-  console.log('product',productList);
   useEffect(()=>{
     getProduct();
   },[query])

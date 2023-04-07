@@ -7,7 +7,7 @@ import ProductDetail from './page/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import PrivateRoute from './route/PrivateRoute';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //1. 페이지 : 전체상품, 로그인, 상품 상세.
 //2. 전체 상품페이지는 전체 상품을 볼 수 있다.
@@ -18,17 +18,17 @@ import { useDispatch } from 'react-redux';
 //6. 로그아웃 클릭시 로그아웃 후 로그인으로 바꿔주기.
 //7. 상품을 검색. 
 function App() {
-  const [authenticate, setAuthenticate] = useState(false);
+  let authenticate = useSelector(state=>state.login);
 
   useEffect(() => {
   },[authenticate])
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <Navbar/>
       <Routes>
         <Route path='/' element={<Product/>} />
-        <Route path='/login' element={<Login setAuthenticate={setAuthenticate} authenticate={authenticate} />} />
-        <Route path='/product/:id' element={<PrivateRoute authenticate={authenticate} />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/product/:id' element={<PrivateRoute />} />
       </Routes>
     </div>
   );

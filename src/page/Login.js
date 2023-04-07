@@ -3,7 +3,7 @@ import { Button,Container,Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({setAuthenticate}) => {
+const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -11,7 +11,7 @@ const Login = ({setAuthenticate}) => {
 
   const loginUser = (e) => {
     e.preventDefault();
-    setAuthenticate(true);
+    dispatch({type:'LOGIN', payload:true});
     navigate('/');
   }
   const increase = () => {
@@ -20,7 +20,7 @@ const Login = ({setAuthenticate}) => {
   const decrease = () => {
     dispatch({type:'DECREMENT', payload: {num:5} });
   }
-  
+
   return (
     <Container >
       <Form onSubmit={(e) => loginUser(e)}>
@@ -38,7 +38,7 @@ const Login = ({setAuthenticate}) => {
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="danger" type="submit">
+      <Button variant="danger" type="submit" >
         로그인
       </Button>
       <Button onClick={increase}>
