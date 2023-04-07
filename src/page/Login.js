@@ -11,7 +11,7 @@ const Login = () => {
 
   const loginUser = (e) => {
     e.preventDefault();
-    dispatch({type:'LOGIN', payload:true});
+    dispatch({type:'LOGINLOGOUT', payload:true});
     navigate('/');
   }
   const increase = () => {

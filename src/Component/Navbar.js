@@ -18,7 +18,7 @@ const Navbar = () => {
     }
   }
   const Logout = () => {
-    dispatch({type:'LOGOUT', payload:false});
+    dispatch({type:'LOGINLOGOUT', payload:false});
   }
   return (
     <div>

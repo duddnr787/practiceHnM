@@ -13,9 +13,7 @@ function reducer(state=initialState, action){
       return {...state, count: state.count - action.payload.num};
     case 'PRODUCT':
       return {...state, productList: action.payload.data};
-    case 'LOGIN':
-      return {...state, authenticate: action.payload};
-    case 'LOGOUT':
+    case 'LOGINLOGOUT':
       return {...state, authenticate: action.payload};
     default :
       return { ...state};
