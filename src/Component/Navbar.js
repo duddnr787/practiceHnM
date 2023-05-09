@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { authenticateAction } from '../redux/actions/authenticateAction';
 
 const Navbar = () => {
   const menuList = ['여성','Divided','남성','신생아/유아','아동','H&M HOME','Sale','지속가능성'];
@@ -17,7 +18,7 @@ const Navbar = () => {
     }
   }
   const Logout = () => {
-    dispatch({type:'LOGINLOGOUT', payload:false});
+    dispatch(authenticateAction.logout());
   }
   return (
     <div>

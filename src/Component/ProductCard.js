@@ -5,7 +5,7 @@ const ProductCard = ({item}) => {
   const [isListHover, setIsListHover] = useState(true);
   const navigate = useNavigate();
   const showDetail = () => {
-    navigate(`/product/${item.id}`)
+    navigate(`/product/${item.id}`);
   }
   return (
     <div className='Card' onClick={showDetail} >

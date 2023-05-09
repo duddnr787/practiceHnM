@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Dropdown, DropdownButton, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { productAction } from '../redux/actions/productAction';
 
 const ProductDetail = () => {
+  const dispatch = useDispatch();
   let {id} = useParams();
-  const [product, setProduct] = useState(null);
   const [isListHover, setIsListHover] = useState(true);
+  const product = useSelector((state)=>state.product.selectedItem);
+
   const getProductDetail = async () => {
-    await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products/${id}`)
-    .then(res => res.json())
-    .then(data => setProduct(data));
-  }
+    dispatch(productAction.getProductDetail(id));
+  };
   useEffect(()=>{
     getProductDetail();
-  },[])
+  },[id])
+
+  console.log(product);
   return (
     <Container className='product-container'>
       <Row>

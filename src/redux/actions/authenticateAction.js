@@ -4,4 +4,9 @@ function login (id, pwd) {
   };
 }
 
-export const authenticateAction = { login };
+function logout (){
+  return (dispatch, getState) => {
+    dispatch({type : "LOGOUT"})
+  }
+}
+export const authenticateAction = { login, logout };

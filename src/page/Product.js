@@ -15,9 +15,11 @@ const Product = () => {
     let search = query.get('q') || ''; // '' 초기값 설정 
     dispatch(productAction.getProducts(search)); //미들웨어 거쳐서 가기 위한 dispatch
     }
+    
   useEffect(()=>{
     getProduct();
   },[query])
+
   return (
     <div>
       <Container>

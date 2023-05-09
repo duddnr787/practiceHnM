@@ -1,6 +1,7 @@
 let initialState = {
   count: 0,
-  productList: []
+  productList: [],
+  selectedItem : null
 };
 
 //리듀서는 순수 함수여야한다.
@@ -14,6 +15,8 @@ function reducer(state = initialState, action) {
       return { ...state, count: state.count - payload.num };
     case 'PRODUCT':
       return { ...state, productList: payload.data };
+    case 'PRODUCT_DETAIL' : 
+      return { ...state, selectedItem: payload.data};
     default:
       return { ...state };
   }

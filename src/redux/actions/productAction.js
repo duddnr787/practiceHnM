@@ -7,4 +7,11 @@ function getProducts(search) {
   };
 }
 
-export const productAction={getProducts}
+function getProductDetail(id) {
+  return async (dispatch) => {
+    await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products/${id}`)
+    .then(res => res.json())
+    .then(data => dispatch({type:'PRODUCT_DETAIL', payload: {data} }));
+  }
+}
+export const productAction={getProducts, getProductDetail}
