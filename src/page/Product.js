@@ -8,7 +8,7 @@ import {productAction} from '../redux/actions/productAction';
 
 const Product = () => {
   const dispatch = useDispatch();
-  let productList = useSelector(state=>state.productList);
+  let productList = useSelector(state=>state.product.productList);
   const [query, setQuery] = useSearchParams();
 
   const getProduct = () => {

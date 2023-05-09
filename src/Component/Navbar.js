@@ -9,8 +9,7 @@ const Navbar = () => {
   const menuList = ['여성','Divided','남성','신생아/유아','아동','H&M HOME','Sale','지속가능성'];
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let authenticate = useSelector(state=>state.authenticate);
-  console.log(authenticate);
+  let authenticate = useSelector(state=>state.auth.authenticate);
   const search = (e) => {
     if(e.key === 'Enter'){
       let keyword = e.target.value; //input 안에 있는 검색 값을 가져오고 싶을 때는 
