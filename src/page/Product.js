@@ -3,17 +3,18 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../Component/ProductCard';
+import {productAction} from '../redux/actions/productAction';
+
 
 const Product = () => {
   const dispatch = useDispatch();
   let productList = useSelector(state=>state.productList);
   const [query, setQuery] = useSearchParams();
-  const getProduct = async () => {
+
+  const getProduct = () => {
     let search = query.get('q') || ''; // '' 초기값 설정 
-    await fetch(`https://my-json-server.typicode.com/duddnr787/practiceHnM/products?q=${search}`)
-    .then (res => res.json())
-    .then (data => dispatch({type:'PRODUCT', payload: {data:(data)} }));
-  }
+    dispatch(productAction.getProducts(search)); //미들웨어 거쳐서 가기 위한 dispatch
+    }
   useEffect(()=>{
     getProduct();
   },[query])

@@ -7,15 +7,16 @@ let initialState = {
 //리듀서는 순수 함수여야한다.
 //Reducer 함수는 기존의 state를 직접 변경하지 않고, 새.로.운 state object(객체)를 작성해서 return해야한다.
 function reducer(state = initialState, action) {
-  switch (action.type) { //switch 문으로 하는 법
+  let {type, payload} = action;
+  switch (type) { //switch 문으로 하는 법
     case 'INCREMENT':
-      return { ...state, count: state.count + action.payload.num };
+      return { ...state, count: state.count + payload.num };
     case 'DECREMENT':
-      return { ...state, count: state.count - action.payload.num };
+      return { ...state, count: state.count - payload.num };
     case 'PRODUCT':
-      return { ...state, productList: action.payload.data };
+      return { ...state, productList: payload.data };
     case 'LOGINLOGOUT':
-      return { ...state, authenticate: action.payload };
+      return { ...state, authenticate: payload };
     default:
       return { ...state };
   }
