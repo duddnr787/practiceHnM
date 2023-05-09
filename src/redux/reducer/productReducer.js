@@ -1,7 +1,6 @@
 let initialState = {
   count: 0,
-  productList: [],
-  authenticate: false
+  productList: []
 };
 
 //리듀서는 순수 함수여야한다.
